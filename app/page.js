@@ -1,50 +1,10 @@
 'use client';
 
+import { cards } from "./data/menuItems";
 import NavBar from "./navbar";
 import { useState, useRef, useEffect } from "react";
+import Link from "next/link";
 
-const cards = [
-  {
-    name: "Italian Tiramisu",
-    descr: "Layers of espresso-soaked ladyfingers, velvety mascarpone cream, and a dusting of dark cocoa — Dolce's most beloved classic.",
-    image: "/p1.jpg",
-  },
-  {
-    name: "Entremet",
-    descr: "A show-stopping French dessert — a delicate matcha dome resting in a vivid blue mirror glaze, sculpted with a dark chocolate tree rising from within. Where pastry becomes art.",
-    image: "/p9.jpg",
-  },
-  {
-    name: "Brookie Blast",
-    descr: "A warm brownie-cookie fusion, topped with a scoop of vanilla cream drizzled with dark chocolate sauce — served with a side pour of rich chocolate gravy.",
-    image: "/p2.jpg",
-  },
-  {
-    name: "Mango Tres Leches",
-    descr: "A tropical twist on the classic — layers of soft cake soaked in three milks, topped with fresh mango chunks, chocolate crumble, and a warm mango pour-over sauce.",
-    image: "/p4.jpg",
-  },
-  {
-    name: "Carrot Cake",
-    descr: "A moist, spiced carrot cake layered with velvety cream cheese frosting, finished with a hand-piped carrot garnish and chocolate crumble dusting.",
-    image: "/p5.jpg",
-  },
-  {
-    name: "Blueberry Serradura",
-    descr: "A Portugese-inspired layered dessert — alternating bands of whipped cream and buscuit crumble, crowned with a vibrant compote, gold dust, and fresh mint.",
-    image: "/p6.jpg",
-  },
-  {
-    name: "Nutella Cheesecake",
-    descr: "A silky baked cheesecake with a buttery biscuit base, topped with a rich Nutella glaze and delicate chocolate swirls — adorned with a hand crafter red sugar tuile and cocoa mandala dusting.",
-    image: "/p7.jpg",
-  },
-  {
-    name: "Blueberry Cheesecake",
-    descr: "A creamy baked cheesecake on a dark biscuit base, generously topped with a glossy blueberry compote — plated with piped cream rosettes, biscuit crumble, and a fresh mint sprig.",
-    image: "/p8.jpg",
-  },
-]
 
 function Card({ name, descr, image }) {
   const ref = useRef(null)
@@ -137,7 +97,9 @@ export default function Home(){
 
       <div>
         {cards.map((card) => (
+          <Link key={card.slug} href={`/menu/${card.slug}`}>
           <Card key={card.name} {...card} />
+          </Link>
         ))}
       </div>
 
